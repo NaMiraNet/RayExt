@@ -14,7 +14,7 @@ on:
 
 jobs:
   scrape-and-test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-2vcpu-ubuntu-2404-arm
     timeout-minutes: 60
 
     steps:
@@ -25,12 +25,12 @@ jobs:
           persist-credentials: true
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: useblacksmith/setup-python@v6
         with:
           python-version: "3.13"
 
       - name: Cache Python dependencies
-        uses: actions/cache@v3
+        uses: useblacksmith/cache@v5
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
